@@ -17,6 +17,10 @@ class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
+"""class AuthoriViewSet(viewsets.ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthoriSerializer"""
+
 class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
@@ -38,9 +42,9 @@ class VolumeViewSet(viewsets.ModelViewSet):
     queryset = Volume.objects.all()
     serializer_class = VolumeSerializer
 
-class PrenotationViewSet(viewsets.ModelViewSet):
+"""class PrenotationViewSet(viewsets.ModelViewSet):
     queryset = Prenotation.objects.all()
-    serializer_class = PrenotationSerializer
+    serializer_class = PrenotationSerializer"""
 
 class LoanViewSet(viewsets.ModelViewSet):
     queryset = Loan.objects.all()

@@ -12,7 +12,7 @@
             <form novalidate data-vv-scope="create-book-form">
               <div class="row">
                 <div class="col-lg-6 form-group">
-                  <label>Nome</label>
+                  <label>Titolo</label>
                   <input
                     type="text"
                     name="title"
@@ -40,12 +40,12 @@
                   >{{ errors.first('create-book-form.ISBN') }}</div>
                 </div>
                 <div class="col-lg-6 form-group">
-                  <label>Copie</label>
+                  <label>numero pagine</label>
                   <input
                     type="number"
                     name="copies"
                     class="form-control"
-                    v-model="book.copies"
+                    v-model="book.pages_number"
                     v-validate="{required: true, numeric:true}"
                   />
                   <div
@@ -60,7 +60,7 @@
                     name="copies_available"
                     class="form-control"
                     v-model="book.copies_available"
-                    v-validate="{required: true, numeric:true, max_value: book.copies}"
+                    v-validate="{required: true, numeric:true}"
                   />
                   <div
                     v-if="errors.has('create-book-form.copies_available')"
@@ -73,7 +73,7 @@
                     type="text"
                     name="summary"
                     class="form-control"
-                    v-model="book.summary"
+                    v-model="book.plot"
                     v-validate="'required'"
                   />
                   <div
@@ -99,21 +99,20 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import { notifier } from '@/shared/messages/';
 export default {
   name: 'CreateBook',
   data() {
     return {
       book: {
-        id: '',
         title: '',
         ISBN: '',
-        copies: '',
-        copies_available: '',
-        loan_history: [],
-        loan_to: '',
-        summary: ''
+        pages_number: '',
+        release_date: '',
+        genres: [],
+        author: [],
+        language: '',
+        plot: '',
+        image:''
       }
     };
   },

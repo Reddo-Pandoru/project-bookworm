@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -11,6 +10,11 @@ class Extra_user_info(models.Model):
     document_number = models.CharField(max_length=50)
     telephone_number = models.CharField(max_length=10)
 
+class Language(models.Model):
+    name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name
+
 class Country (models.Model):
     name = models.CharField(max_length=30)
     def __str__(self):
@@ -18,12 +22,14 @@ class Country (models.Model):
 
 class Editor(models.Model):
   name = models.CharField(max_length=50)
-  country_id  = models.ForeignKey(Country, on_delete=models.CASCADE)
+  country  = models.ForeignKey(Country, on_delete=models.CASCADE)
+  def __str__(self):
+      return self.name
 
 class Genre (models.Model):
   type =  models.CharField(max_length=50)
   def __str__(self):
-        return self.type
+      return self.type
 
 class Author(models.Model):
     first_name =  models.CharField(max_length=30)
@@ -32,33 +38,35 @@ class Author(models.Model):
     death_date = models.DateField()
     note = models.TextField()
     sex = models.TextChoices('Uomo', 'Donna')
-    country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     def __str__(self):
-        return self.last_name
+        return self.last_name + " " + self.first_name
 
 class Book(models.Model):
     isbn = models.CharField(primary_key=True, max_length=14 )
     book_name = models.CharField(max_length=200)
     book_plot = models.TextField()
     book_pages_number = models.IntegerField()
-    book_release_date = models.DateField()
-    book_language = models.CharField(max_length=50)
-    book_image = models.CharField(max_length=500)
+    book_release_date = models.DateField(null=True, blank=True)
+    book_image = models.ImageField(null=True, blank=True)
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, null=True)
+    editor = models.ForeignKey(Editor, on_delete=models.CASCADE, null=True)
     author = models.ManyToManyField(Author)
     genres = models.ManyToManyField(Genre)
-    
-class Volume(models.Model):
-    book_isbn = models.ForeignKey(Book, on_delete=models.CASCADE)
-    purchase_date = models.DateField()
-    dismission_date = models.DateField()
 
-class  Prenotation(models.Model):
-  date = models.DateTimeField(default=datetime.now)
-  user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-  volume_id = models.ForeignKey(Volume, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.book_name
+
+class Volume(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    purchase_date = models.DateField(null=True, blank=True)
+    dismission_date = models.DateField(null=True, blank=True)
+    def __str__(self):
+        return self.book
 
 class Loan(models.Model):
-  return_date = models.DateTimeField(default=datetime.now, blank=True)
+  return_date = models.DateTimeField(blank=True, null=True)
   borrow_date = models.DateTimeField(default=datetime.now)
-  user_id  = models.ForeignKey(User, on_delete=models.CASCADE)
-  volume_id = models.ForeignKey(Volume, on_delete=models.CASCADE)    
+  user  = models.ForeignKey(User, on_delete=models.CASCADE)
+  volume = models.ForeignKey(Volume, on_delete=models.CASCADE)
+  prolungato = models.BooleanField(default=False)

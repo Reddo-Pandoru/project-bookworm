@@ -1,19 +1,18 @@
 <template>
   <div class="container-fluid">
-    <Loading :msg="message" v-if="loading"></Loading>
-    <div class="row" v-show="!loading">
+    <div class="row" >
       <div class="col-sm-12">
-        <h2>Users  {{users.length}}</h2>
+        <h2>Users  </h2>
       </div>
     </div>
-    <div class="form-row" v-show="!loading">
+    <div class="form-row" >
       <div class="col-lg-6 mb-2 flex-column" v-for="user in users" :key="user.id">
         <div class="card h-100">
           <div class="card-header d-flex">
             <h4
               class="text-truncate flex-grow-1 flex-shrink-1 mb-0 pb-1 align-self-center"
-              :title="user.id"
-            >{{user.username}} ({{user.email}})</h4>
+              :title="user.username"
+            >{{user.username}} </h4>
             <button
               class="btn btn-lg btn-link flex-grow-0 flex-shrink-0"
               @click="askToDelete(user)"
@@ -23,17 +22,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <h5 class="card-title">Indirizzo</h5>
-                {{user.address}}
-              </div>
-              <div class="col-lg-6">
-                <label>{{user.loan_history.filter(h => h.is_loaned === true).length}} Copie prestate</label>
-                <ul v-if="user.loan_history.length > 0">
-                  <li
-                    v-for="(loan, index) in user.loan_history"
-                    :key="index"
-                    v-show="loan.is_loaned === true"
-                  >{{loan.title}}</li>
-                </ul>
+                {{user.email}}
               </div>
             </div>
           </div>
@@ -51,7 +40,7 @@ export default {
   name: 'ManageUsers',
     data() {
     return {
-      books:null,
+      users:null,
       url:'',
       username:'',
       email:'',
