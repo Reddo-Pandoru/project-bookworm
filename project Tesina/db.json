@@ -1,0 +1,273 @@
+{
+  "books": [
+    {
+      "id": "01",
+      "title": "prova n 1",
+      "ISBN": "1595940146",
+      "copies": "3",
+      "copies_available": 3,
+      "loan_history": [
+        {
+          "id": "2",
+          "name": "Pippo",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 04:54",
+          "return_date": "17-03-2020 05:25"
+        },
+        {
+          "id": "2",
+          "name": "Pippo",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:19",
+          "return_date": "17-03-2020 05:25"
+        },
+        {
+          "id": "1",
+          "name": "Marco",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:20",
+          "return_date": "17-03-2020 05:46"
+        },
+        {
+          "id": "2",
+          "name": "Pippo",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:21",
+          "return_date": "17-03-2020 05:25"
+        },
+        {
+          "id": "1",
+          "name": "Marco",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:46",
+          "return_date": "17-03-2020 05:46"
+        },
+        {
+          "id": "gMNsVOt",
+          "name": "wail",
+          "is_loaned": false,
+          "loan_date": "02-04-2020 11:20",
+          "return_date": "02-04-2020 11:26"
+        },
+        {
+          "id": "oJMn7TO",
+          "name": "wail",
+          "is_loaned": false,
+          "loan_date": "14-05-2020 10:55",
+          "return_date": "14-05-2020 10:56"
+        }
+      ],
+      "loan_to": "",
+      "summary": ""
+    },
+    {
+      "id": "02",
+      "title": "prova n 2",
+      "ISBN": "158234518X",
+      "copies": "3",
+      "copies_available": "3",
+      "loan_history": [],
+      "loan_to": "",
+      "summary": " "
+    },
+    {
+      "id": "03",
+      "title": "prova n 3",
+      "ISBN": "8806193112",
+      "copies": "1",
+      "copies_available": 1,
+      "loan_history": [
+        {
+          "id": "qd7pvhj",
+          "name": "wail",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:46",
+          "return_date": "17-03-2020 05:46"
+        },
+        {
+          "id": "1",
+          "name": "Marco",
+          "is_loaned": false,
+          "loan_date": "02-04-2020 11:20",
+          "return_date": "02-04-2020 11:26"
+        }
+      ],
+      "loan_to": "",
+      "summary": ""
+    },
+    {
+      "id": "04",
+      "title": "prova n 4",
+      "ISBN": "0802713394",
+      "copies": "1",
+      "copies_available": "1",
+      "loan_history": [],
+      "loan_to": "",
+      "summary": " "
+    },
+    {
+      "id": "05",
+      "title": "prova n 5",
+      "ISBN": "0143016695",
+      "copies": "1",
+      "copies_available": "1",
+      "loan_history": [],
+      "loan_to": "",
+      "summary": ""
+    },
+    {
+      "id": "06",
+      "title": "prova n 6",
+      "ISBN": "4073570986",
+      "copies": "1",
+      "copies_available": 1,
+      "loan_history": [
+        {
+          "id": "gMNsVOt",
+          "name": "wail",
+          "is_loaned": false,
+          "loan_date": "02-04-2020 11:20",
+          "return_date": "02-04-2020 11:26"
+        }
+      ],
+      "loan_to": "",
+      "summary": ""
+    },
+    {
+      "id": "07",
+      "title": "prova n 7",
+      "ISBN": "9781582345185",
+      "copies": "1",
+      "copies_available": "1",
+      "loan_history": [],
+      "loan_to": "",
+      "summary": " "
+    },
+    {
+      "id": "08",
+      "title": "prova n 8",
+      "ISBN": "9780199341078",
+      "copies": "1",
+      "copies_available": "1",
+      "loan_history": [],
+      "loan_to": "",
+      "summary": " "
+    },
+    {
+      "id": "nRzzvWE",
+      "title": "radiant",
+      "ISBN": "12566895461",
+      "copies": "7",
+      "copies_available": "3",
+      "loan_history": [],
+      "loan_to": "",
+      "summary": "Manga francese"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Marco",
+      "lastname": "Rossi",
+      "address": "Reggio Emilia, Italia",
+      "email": "marcorossi@email.com",
+      "onloan": 0,
+      "loan_history": [
+        {
+          "id": "01",
+          "title": "prova n 1",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:20",
+          "return_date": "17-03-2020 05:46"
+        },
+        {
+          "id": "01",
+          "title": "prova n 1",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:46",
+          "return_date": "17-03-2020 05:46"
+        },
+        {
+          "id": "03",
+          "title": "prova n 3",
+          "is_loaned": false,
+          "loan_date": "02-04-2020 11:20",
+          "return_date": "02-04-2020 11:26"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Pippo",
+      "lastname": "rossi",
+      "address": "Reggio Emilia, Italia",
+      "email": "Pipporossi@email.com",
+      "onloan": 0,
+      "loan_history": [
+        {
+          "id": "01",
+          "title": "prova n 1",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 04:54",
+          "return_date": "17-03-2020 05:25"
+        },
+        {
+          "id": "01",
+          "title": "prova n 1",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:19",
+          "return_date": "17-03-2020 05:25"
+        },
+        {
+          "id": "01",
+          "title": "prova n 1",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:21",
+          "return_date": "17-03-2020 05:25"
+        },
+        {
+          "id": "03",
+          "title": "prova n 3",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:31",
+          "return_date": "17-03-2020 05:32"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "AAA",
+      "lastname": "A",
+      "address": "Reggio Emilia, Italia",
+      "email": "AAAA@email.com",
+      "onloan": 0,
+      "loan_history": [
+        {
+          "id": "03",
+          "title": "prova n 3",
+          "is_loaned": false,
+          "loan_date": "17-03-2020 05:19",
+          "return_date": "17-03-2020 05:19"
+        }
+      ]
+    },
+    {
+      "id": "oJMn7TO",
+      "name": "wail",
+      "lastname": "maarouf",
+      "address": "carlo galeotti",
+      "email": "maarouf.wail@gmail.com",
+      "Codfiscale": "mrfwla02a22h223c",
+      "onloan": 0,
+      "loan_history": [
+        {
+          "id": "01",
+          "title": "prova n 1",
+          "is_loaned": false,
+          "loan_date": "14-05-2020 10:55",
+          "return_date": "14-05-2020 10:56"
+        }
+      ]
+    }
+  ]
+}
