@@ -9,6 +9,8 @@ class Extra_user_info(models.Model):
     document_type = models.CharField(max_length=50)
     document_number = models.CharField(max_length=50)
     telephone_number = models.CharField(max_length=10)
+    def __str__(self):
+        return self.user.username
 
 class Language(models.Model):
     name = models.CharField(max_length=30)
@@ -42,6 +44,8 @@ class Author(models.Model):
     def __str__(self):
         return self.last_name + " " + self.first_name
 
+
+
 class Book(models.Model):
     isbn = models.CharField(primary_key=True, max_length=14 )
     book_name = models.CharField(max_length=200)
@@ -61,8 +65,9 @@ class Volume(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     purchase_date = models.DateField(null=True, blank=True)
     dismission_date = models.DateField(null=True, blank=True)
+    prolungato = models.BooleanField(default=False)
     def __str__(self):
-        return self.book
+        return self.book.book_name
 
 class Loan(models.Model):
   return_date = models.DateTimeField(blank=True, null=True)

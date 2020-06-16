@@ -1,12 +1,5 @@
 <template>
   <div class="row">
-  <div class="col-lg-6" >
-    <input class="form-control mt-2" type="hidden" v-model="url" >
-    <input class="form-control mt-2" type="text" v-model="title" placeholder="title">
-    <input class="form-control mt-2" type="text" v-model="body" placeholder="body" id="">
-    <button @click="postBook" class="btn bn-sm btn-success mt-2">save</button>
-
-   </div>
   <div class="col-lg-6" > 
     <table class="table">
       <thead>
@@ -19,8 +12,9 @@
       <tbody>
         <tr v-for="book in books" v-bind:key="book.url">
           <td>{{book.url}}</td>
+          <td>{{book.isbn}}</td>
           <td>{{book.book_name}}</td>
-          <td>{{book.body}}</td>
+          <td>{{book.book_plot}}</td>
           <td>
             <button @click="getOne(book)" class="btn bn-sm btn-success"><i class="fa fa-pencil" aria-hidden="true"></i></button>
           </td>
@@ -45,10 +39,9 @@ export default {
   },
   data(){
     return{
-      books:null,
+      book:null,
+      id:'',
       url:'',
-      title:'',
-      body:'',
 
 
 
@@ -59,48 +52,9 @@ export default {
   },
   methods:{
     getAll(){
-      axios.get('http://localhost:8000/books').then((res)=>{
-          this.books=res.data;
-          this.url='';
-          this.title='';
-          this.body='';
+      axios.get('http://localhost:8000/books/9788804637134').then((res)=>{
+        console.log(res.data);
       })
-    },
-    getOne(book){
-      this.url=book.id;
-      this.title=book.title;
-      this.body=book.body;
-    },
-    deleteOne(url){
-      axios.delete(url,{auth:{
-            username:'admin',
-            password: 'admin'
-          }})
-      .then(()=>{
-          this.getAll();
-        })
-    },
-    postBook(){
-      if(this.url==''){
-        axios.post('http://localhost:8000/books/',
-        {title:this.title,body:this.body}, {auth:{
-            username:'admin',
-            password: 'admin'
-          }},
-          ).then(()=>{
-            this.getAll();
-        })}
-      else{
-         axios.put(this.url,
-        {title:this.title,body:this.body},
-          {auth:{
-            username:'admin',
-            password: 'admin'
-          }}).then(()=>{
-            this.getAll();
-        })
-      }  
-        
     }
   }
 }

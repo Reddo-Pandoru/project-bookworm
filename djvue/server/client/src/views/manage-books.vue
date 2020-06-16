@@ -2,21 +2,21 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-12" >
-        <h2>Libri disponibili </h2>
+        <h2>catalogo Libri </h2>
       </div>
     </div>
+    <input  type="text" name="name" class="wail" v-model="search"/>
+    <span>   </span>
+    <button   class="btn btn-primary" type="submit" v-on:click.prevent="getAll()" >Search</button>
     <div class="form-row">
-      <div class="col-lg-6 mb-2 flex-column" v-for="book in books" :key="book.id">
+      <div class="col-lg-6 mb-2 flex-column" v-for="book in books " :key="book.isbn">
         <div class="card h-100">
           <div class="card-header d-flex">
             <h4
               class="text-truncate flex-grow-1 flex-shrink-1 mb-0 pb-1 align-self-center"
               :title="book.book_name"
             >{{book.book_name}}</h4>
-            <button
-              class="btn btn-lg btn-link flex-grow-0 flex-shrink-0"
-              @click="singlebook(book)"
-            >detail book</button>
+            <router-link :to="{ name: 'detail', params: { isbn: book.isbn}}" class="nav-item nav-link">Dettagli</router-link>
           </div>
           <div class="card-body">
             <div class="row">
@@ -26,12 +26,16 @@
                 {{book.isbn}}
               </div>
               <div class="col-lg-6">
-                <label>Copies disponibili</label>
-                {{book.language}}
+                <label>Lingua</label>
+                {{ book.language }} 
               </div>
               <div class="col-lg-6">
-                <label>ISBN</label>
-                {{book.ISBN}}
+                <label>Autori:  </label>
+                <span v-for="author in book.author" :key="author.id">{{author}}</span>
+              </div>
+              <div class="col-lg-6">
+                <label>Genere:  </label>
+                <span v-for="genere in book.genres" :key="genere.id">{{genere}}</span>
               </div>
             </div>
           </div>
@@ -43,15 +47,14 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   name: 'ManageBooks',
   data() {
     return {
       books:null,
-      url:'',
-      title:'',
-      body:'',
-      csrf: ''
+      copies:Number,
+      search:''
     };
   },
   mounted(){
@@ -59,32 +62,44 @@ export default {
   },
   methods: {
     getAll(){
-      axios.get('http://localhost:8000/books').then((res)=>{
+      let url="http://localhost:8000/books";
+      if(this.search!==''||this.search!==null) {
+            url= `http://localhost:8000/books?search=${this.search}`
+          }
+      axios.get(url).then((res)=>{
           this.books=res.data;
-          this.url='';
-          this.title='';
-          this.plot='';
+          console.log(this.books);
       })
     }, 
-    getOne(book){
-      this.url=book.id;
-      this.title=book.title;
-      this.body=book.body;
-    },
-    singlebook(url){
-      axios.delete(url,{auth:{
-            username:'admin',
-            password: 'admin'
-          }})
-      .then(()=>{
-          this.getAll();
-        })
-    }   
-  }
+    filteredBooks:function(){
+      return this.books.filter((books)=>{
+        return books.book_name.match(this.search)
+      })
+    }
+   /* getCopies(isbn){
+      let info;
+      let url= 'http://127.0.0.1:8000/volumes/?isbn='+ isbn;
+      axios.get(url).then((res)=>{
+        console.log(res.data);
+        info= res.data.length;
+        console.log(info);
+      })
+    }*/
+  },
+   /*computed: {
+    filteredBooks:function(){
+      return this.books.filter((books)=>{
+        return books.book_name.match(this.search)
+      })
+    }
+  }*/
 }
 </script>
-<style scoped lang="scss">
+<style >
 .card {
   min-height: 150px;
+}
+.wail{
+  margin: 0.25rem;
 }
 </style>

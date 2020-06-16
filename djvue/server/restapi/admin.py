@@ -9,3 +9,4 @@ admin.site.register(Book)
 admin.site.register(Volume)
 admin.site.register(Language)
 admin.site.register(Loan)
+

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue'
-import PageNotFound from './views/page-not-found.vue'
+
 
 Vue.use(Router);
 
@@ -11,7 +10,7 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: Home
+            component: () => import( './views/Home.vue')
         },
         {
             path: '/managebooks',
@@ -19,33 +18,29 @@ export default new Router({
             component: () => import( './views/manage-books.vue')
         },
         {
-            path: '/loanbook',
-            name: 'loanBook',
-            component: () => import( './views/loan-book.vue')
-        },
-        {
-            path: '/returnbook',
-            name: 'returnBook',
-            component: () => import( './views/return-book.vue')
-        },
-        {
-            path: '/createbook',
-            name: 'createbook',
-            component: () => import( './views/create-book.vue')
-        },
-        {
-            path: '/createuser',
-            name: 'createuser',
-            component: () => import( './views/create-user.vue')
-        },
-        {
             path: '/manageusers',
             name: 'manageUsers',
-            component: () => import( './views/manage-users.vue')
+            component: () => import( './components/login.vue')
+        },
+        {
+            path: '/lista',
+            name: 'lista',
+            component: () => import( './views/lista-book.vue')
+        },
+        {
+            path: '/user-loans',
+            name: 'user-loans',
+            component: () => import( './views/user-loans.vue')
+        },
+        {
+            path: '/books/:isbn',
+            name: 'detail',
+            component: () => import( './views/bookDetail.vue'),
+            props: true
         },
         {
             path: '*',
-            component: PageNotFound
+            component: () => import( './views/page-not-found.vue')
 
         }
     ]

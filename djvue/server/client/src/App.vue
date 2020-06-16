@@ -1,21 +1,25 @@
 <template>
-  <Navbar/>
- <Container />
+  <div id="app">
+    <navBar></navBar>
+    <div class="main-section">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
-import Container from './views/manage-books.vue'
-import Navbar from './components/nav-bar.vue'
-
+import navBar from '@/components/nav-bar';
+//import container from '@/views/manage-books';
+import 'bootstrap/dist/js/bootstrap.bundle';
+import 'awesome-notifications/dist/style.css';
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    Navbar,
-    Container
-
+    navBar
   }
-}
+};
 </script>
 
-<style>
+<style lang="scss">
+@import '@/styles/index.scss';
 </style>

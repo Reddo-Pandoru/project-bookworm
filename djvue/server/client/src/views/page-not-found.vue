@@ -1,13 +1,13 @@
 <template>
   <div class="not-found">
     <h1>Whoops!</h1>
-    <p>Something went wrong</p>
+    <p>Qualcosa è andato storto</p>
   </div>
 </template>
 <style lang="scss" scoped>
 .not-found {
   display: inline-block;
-  background: #00aff9 url('https://cbwconline.com/IMG/Codepen/Unplugged.png') center / cover no-repeat; // cbwconline.com/IMG/Codepen/Unplugged.png) center/cover no-repeat;
+  background: #00aff9 ;
   height: 100vh;
   width: 100%;
   margin: 0;

@@ -45,16 +45,18 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     author = serializers.StringRelatedField(many=True)
     genres = serializers.StringRelatedField(many=True)
+    editor = serializers.StringRelatedField()
     language =  serializers.StringRelatedField()
+    book_image = serializers.ImageField(use_url=True) 
     class Meta:
         model = Book
-        fields = ['isbn','url','isbn','book_name','book_plot','book_pages_number','book_release_date','language','book_image','author','genres']
+        fields = ['isbn','url','isbn','book_name','book_plot','book_pages_number','book_release_date','language','book_image','editor','author','genres']
 
 class VolumeSerializer(serializers.HyperlinkedModelSerializer):
-   # book_isbn = serializers.StringRelatedField(many=True)
+    book = serializers.StringRelatedField()
     class Meta:
         model = Volume
-        fields = ['id','url','book_isbn', 'purchase_date','dismission_date']
+        fields = ['id','url','book', 'purchase_date','dismission_date']
 
 """class  PrenotationSerializer(serializers.HyperlinkedModelSerializer):
    # user_id = serializers.StringRelatedField(many=True)
@@ -64,8 +66,9 @@ class VolumeSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id','url','date','user_id','volume_id']"""
 
 class LoanSerializer(serializers.HyperlinkedModelSerializer):
-   # user_id = serializers.StringRelatedField(many=True)
-   # volume_id = serializers.StringRelatedField(many=True)
+    user_id = serializers.StringRelatedField()
+    volume_id = serializers.StringRelatedField()
+
     class Meta:
         model = Loan
-        fields = ['id','url','return_date','borrow_date','user_id','volume_id']
+        fields = ['id','url','return_date','borrow_date','user_id','volume_id','prolungato']
