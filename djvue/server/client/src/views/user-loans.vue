@@ -12,7 +12,7 @@
           <div class="card-header d-flex">
             <h4 
               class="text-truncate flex-grow-1 flex-shrink-1 mb-0 pb-1 align-self-center">
-             {{  book[index] }} </h4>
+             {{  book[0] }} </h4>
           </div>
           <div class="card-body">
             <div class="row">
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <img src="@/assets/utente_2.jpg" alt="" width="200" height="200">
+    <img  v-bind:src="'http://localhost:8000/media/utente_'+this.$route.params.user+'.jpg'" alt="" width="200" height="200">
     <button v-on:click="logout" class="btn btn-lg btn-primary mr-2">logout</button>
   </div>
 </template>
@@ -106,7 +106,7 @@ export default {
         borrow_date:this.borrow_date,
         user:this.user,
         volume:this.volume},
-        {auth:{username:'user', password: 'user'}}
+        {auth:{username:'admin', password: 'admin'}}
       ).then(()=>{
         this.getAll();
       })

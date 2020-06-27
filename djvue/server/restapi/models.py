@@ -37,14 +37,17 @@ class Author(models.Model):
     first_name =  models.CharField(max_length=30)
     last_name = models.CharField(max_length=150)
     birth_date = models.DateField()
-    death_date = models.DateField()
+    death_date = models.DateField(null=True, blank=True)
     note = models.TextField()
     sex = models.TextChoices('Uomo', 'Donna')
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     def __str__(self):
         return self.last_name + " " + self.first_name
 
-
+class Sezione(models.Model):
+    name = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
 
 class Book(models.Model):
     isbn = models.CharField(primary_key=True, max_length=14 )
@@ -57,6 +60,7 @@ class Book(models.Model):
     editor = models.ForeignKey(Editor, on_delete=models.CASCADE, null=True)
     author = models.ManyToManyField(Author)
     genres = models.ManyToManyField(Genre)
+    sezione = models.ForeignKey(Sezione, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.book_name

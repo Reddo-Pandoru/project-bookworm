@@ -5,7 +5,7 @@
             <hr>
             <div class="row" >
                 <div class="col-3 border-right">
-                  <img v-bind:src="book.book_image" class="img-responsive"  width="200" height="200"  alt="image">
+                  <img v-bind:src="book.book_image" class="img-fluid"  width="200" height="200"  alt="image">
                   <p><b>ISBN:</b>{{book.isbn}}</p>
                 </div>
                 <div class="col-5 ">
@@ -19,7 +19,7 @@
                     <p><b>Autori:</b> <span  v-for="author in book.author" :key="author.id"> {{author}} </span> 
                     <p><b>Generi:</b> <span  v-for="genere in book.genres" :key="genere.id"> {{genere}} </span>
                     <p><b>Editore:</b> {{book.editor}}</p>
-                    <p><b>Sezione:</b>la sezione in realtà non esiste</p>
+                    <p><b>Sezione:</b>{{book.sezione}}</p>
                     <p><b>Numero di pagine:</b> {{book.book_pages_number ? book.book_pages_number : '-'}}</p>
                      <p><b>Data di pubblicazione:</b> {{book.book_release_date}}</p>
                 </div>

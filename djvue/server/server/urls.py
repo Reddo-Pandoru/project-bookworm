@@ -30,6 +30,7 @@ router.register('loans', LoanViewSet)
 router.register('books', BookViewSet) 
 router.register('countries', CountryViewSet) 
 router.register('editors', EditorViewSet) 
+router.register('sezioni', SezioneViewSet) 
 router.register('genres', GenreViewSet) 
 router.register('volumes', VolumeViewSet) 
 #router.register('prenotations', PrenotationViewSet) 
@@ -41,8 +42,11 @@ router.register('volumes', VolumeViewSet)
 urlpatterns = [
   
     path('', include(router.urls)),
+    path('restapi/', include('restapi.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api-token-auth/', views.obtain_auth_token, name='api-token-auth' ),
+    
+
     #path('api/instances/', views.LoanViewSet.as_view(), name="instances"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

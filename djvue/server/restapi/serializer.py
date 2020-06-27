@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Extra_user_info, Country, Editor, Genre, Author, Book, Volume,Loan 
+from .models import Extra_user_info, Country, Editor, Genre, Author, Book, Volume,Loan, Sezione 
 from datetime import datetime
 from django.contrib.auth.models import User
 
@@ -28,6 +28,11 @@ class GenreSerializer(serializers.HyperlinkedModelSerializer):
         model = Genre
         fields = ['id','url','type']
 
+class SezioneSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Sezione
+        fields = ['id','url','name']
+
 """class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     #country_id = serializers.SlugRelatedField(many=False,
      #   read_only=True,slug_field='name')
@@ -48,9 +53,10 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
     editor = serializers.StringRelatedField()
     language =  serializers.StringRelatedField()
     book_image = serializers.ImageField(use_url=True) 
+    sezione = serializers.StringRelatedField()
     class Meta:
         model = Book
-        fields = ['isbn','url','isbn','book_name','book_plot','book_pages_number','book_release_date','language','book_image','editor','author','genres']
+        fields = ['isbn','url','isbn','book_name','book_plot','book_pages_number','book_release_date','language','book_image','sezione','editor','author','genres']
 
 class VolumeSerializer(serializers.HyperlinkedModelSerializer):
     book = serializers.StringRelatedField()
